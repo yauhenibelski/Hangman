@@ -18,6 +18,7 @@ module.exports = {
     "import/prefer-default-export": "off",
     "arrow-body-style": "off",
     "no-param-reassign": "off",
+    "class-methods-use-this": "off",
     "no-unused-expressions": "off"
   }
 }

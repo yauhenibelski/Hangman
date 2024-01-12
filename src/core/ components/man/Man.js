@@ -1,15 +1,14 @@
-import createElement from '../../utils/createElement';
-import gallows from '../../assets/gallowsSVG.svg';
+import createElement from '../../../utils/createElement';
+import gallows from '../../../assets/gallowsSVG.svg';
 
 class Man {
   constructor() {
-    this.xmlns = 'http://www.w3.org/2000/svg';
     this.container = createElement();
     this.container.classList.add('man');
 
     fetch(gallows)
       .then((svg) => svg.text())
-      .then((svgCode) => this.container.innerHTML = svgCode)
+      .then((svgCode) => { this.container.innerHTML = svgCode; });
 
     this.body = {
       HEAD: this.createBody('circle', {
@@ -37,9 +36,15 @@ class Man {
 
   numAddedPart = 0;
 
+  clearGallows() {
+    this.numAddedPart = 0;
+    Object.values(this.body).forEach((svgElem) => svgElem.remove());
+  }
+
   createBody(type, props, filter) {
-    const elemContainer = document.createElementNS(this.xmlns, 'g');
-    const elem = document.createElementNS(this.xmlns, type);
+    const xmlns = 'http://www.w3.org/2000/svg';
+    const elemContainer = document.createElementNS(xmlns, 'g');
+    const elem = document.createElementNS(xmlns, type);
 
     elemContainer.setAttributeNS(null, 'filter', `url(#filter${filter}_d_9_20)`);
     elem.setAttributeNS(null, 'stroke', 'black');

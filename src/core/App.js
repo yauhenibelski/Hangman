@@ -1,5 +1,5 @@
 import createElement from '../utils/createElement';
-import Man from './ components/Man';
+import Man from './ components/man/Man';
 
 class App {
   container = document.body;
