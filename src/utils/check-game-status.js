@@ -13,7 +13,7 @@ export const checkGameStatus = (l) => {
     currentElement.style.backgroundColor = 'rgba(111, 179, 102, 0.293)';
   } else {
     Man.appendPartOfBody();
-    currentElement.style.backgroundColor = 'rgb(173, 173, 173)';
+    currentElement.style.backgroundColor = 'rgba(118, 118, 118, 0.32)';
   }
   currentElement.onclick = null;
   currentElement.style.cursor = 'not-allowed';
