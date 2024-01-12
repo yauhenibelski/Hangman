@@ -1,12 +1,16 @@
 import createElement from '../../utils/createElement';
-import gallows from '../../assets/gallowsSVG.html';
+import gallows from '../../assets/gallowsSVG.svg';
 
 class Man {
   constructor() {
     this.xmlns = 'http://www.w3.org/2000/svg';
     this.container = createElement();
     this.container.classList.add('man');
-    this.container.innerHTML = gallows;
+
+    fetch(gallows)
+      .then((svg) => svg.text())
+      .then((svgCode) => this.container.innerHTML = svgCode)
+
     this.body = {
       HEAD: this.createBody('circle', {
         'shape-rendering': 'crispEdges', cx: '430', cy: '115', r: '33', troke: 'blac,',
