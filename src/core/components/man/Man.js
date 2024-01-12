@@ -1,10 +1,11 @@
 import createElement from '../../../utils/createElement';
 import gallows from '../../../assets/gallowsSVG.svg';
+import className from './man.module.scss';
 
 class Man {
   constructor() {
     this.container = createElement();
-    this.container.classList.add('man');
+    this.container.classList.add(className.man_container);
 
     fetch(gallows)
       .then((svg) => svg.text())
@@ -48,7 +49,7 @@ class Man {
 
     elemContainer.setAttributeNS(null, 'filter', `url(#filter${filter}_d_9_20)`);
     elem.setAttributeNS(null, 'stroke', 'black');
-    elem.setAttributeNS(null, 'stroke-width', '4');
+    elem.setAttributeNS(null, 'stroke-width', '8');
 
     Object.entries(props).forEach((prop) => {
       const [name, value] = prop;
