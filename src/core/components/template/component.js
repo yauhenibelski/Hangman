@@ -1,4 +1,4 @@
-import createElement from '../../../utils/createElement';
+import createElement from '../../../utils/create-element';
 
 class Component {
   constructor(className, tagName) {

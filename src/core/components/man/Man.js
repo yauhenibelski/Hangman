@@ -1,4 +1,4 @@
-import createElement from '../../../utils/createElement';
+import createElement from '../../../utils/create-element';
 import gallows from '../../../assets/gallowsSVG.svg';
 import className from './man.module.scss';
 
@@ -13,7 +13,7 @@ class Man {
 
     this.body = {
       HEAD: this.createBody('circle', {
-        'shape-rendering': 'crispEdges', cx: '430', cy: '115', r: '33', troke: 'blac,',
+        'shape-rendering': 'crispEdges', cx: '430', cy: '116', r: '33', troke: 'blac',
       }, '10'),
       BONE: this.createBody('line', {
         x1: '428', y1: '271', x2: '428', y2: '150',
@@ -25,7 +25,7 @@ class Man {
         x1: '476.211', y1: '261.894', x2: '428.211', y2: '165.894',
       }, '7'),
       L_LEG: this.createBody('line', {
-        x1: '387.161', y1: '361.214', x2: '428.161', y2: '265.214',
+        x1: '387.161', y1: '361.214', x2: '428.161', y2: '270',
       }, '8'),
       R_LEG: this.createBody('line', {
         x1: '476.211', y1: '362.894', x2: '428.211', y2: '266.894',

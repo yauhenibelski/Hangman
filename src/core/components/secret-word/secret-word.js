@@ -1,12 +1,12 @@
 import className from './secret-word.module.scss';
 import Component from '../template/component';
-import createElement from '../../../utils/createElement';
+import createElement from '../../../utils/create-element';
 
 class SecretWord extends Component {
   constructor(secretWord) {
     super(className.secret_word);
 
-    this.mark = '*  ';
+    this.mark = '*';
     this.secretWord = secretWord;
     this.wordsElements = [];
     this.createComponent();
