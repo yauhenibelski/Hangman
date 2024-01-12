@@ -7,8 +7,9 @@ class SecretWord extends Component {
     super(className.secret_word);
 
     this.mark = '*';
-    this.secretWord = secretWord;
     this.wordsElements = [];
+    SecretWord.secretWord = secretWord;
+
     this.createComponent();
 
     SecretWord.showLetter = this.showLetter.bind(this);
@@ -17,7 +18,7 @@ class SecretWord extends Component {
   }
 
   createComponent() {
-    [...this.secretWord].forEach(() => {
+    [...SecretWord.secretWord].forEach(() => {
       const span = createElement({ tagName: 'span', text: this.mark, className: className.letter });
 
       this.wordsElements.push(span);
@@ -26,9 +27,9 @@ class SecretWord extends Component {
   }
 
   showLetter(letter) {
-    if (this.secretWord.includes(letter)) {
+    if (SecretWord.secretWord.includes(letter)) {
       this.wordsElements.forEach((elem, i) => {
-        if (letter.toLowerCase() === this.secretWord[i].toLowerCase()) {
+        if (letter.toLowerCase() === SecretWord.secretWord[i].toLowerCase()) {
           elem.innerText = letter.toUpperCase();
         }
       });
@@ -38,14 +39,13 @@ class SecretWord extends Component {
   }
 
   setNewSecretWord(newWord) {
-    this.secretWord = newWord;
+    SecretWord.secretWord = newWord;
     this.wordsElements = [];
     this.render();
-    this.createComponent();
   }
 
   areAllLettersOpen() {
-    return this.wordsElements.every((letter) => letter !== this.mark);
+    return this.wordsElements.every((elem) => elem.innerText.toLowerCase() !== this.mark);
   }
 }
 

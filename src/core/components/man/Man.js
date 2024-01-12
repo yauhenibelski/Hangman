@@ -33,6 +33,8 @@ class Man {
     };
 
     Man.appendPartOfBody = this.appendPartOfBody.bind(this);
+    Man.ifAllPartsAppend = this.ifAllPartsAppend.bind(this);
+    Man.clearGallows = this.clearGallows.bind(this);
   }
 
   numAddedPart = 0;
@@ -70,6 +72,10 @@ class Man {
   }
 
   getElem = () => this.container;
+
+  ifAllPartsAppend() {
+    return this.numAddedPart === Object.keys(this.body).length;
+  }
 }
 
 export default Man;

@@ -6,6 +6,7 @@ class Popup extends Component {
     super(CLASS.popup);
     this.content = content;
     Popup.elem = this;
+    Popup.remove = this.remove.bind(this);
   }
 
   static run = (content) => document.body.append(new Popup(content).render());
@@ -22,7 +23,7 @@ class Popup extends Component {
     document.body.style.overflow = 'hidden';
 
     this.content.onclick = (elem) => elem.stopPropagation();
-    this.container.onclick = () => this.remove();
+    // this.container.onclick = () => this.remove();
 
     setTimeout(() => {
       this.container.style = '';

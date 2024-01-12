@@ -1,6 +1,5 @@
 import { checkGameStatus } from '../../../utils/check-game-status';
 import createElement from '../../../utils/create-element';
-
 import Component from '../template/component';
 import CLASS from './keyboard.module.scss';
 
@@ -9,8 +8,20 @@ class Keyboard extends Component {
     super(CLASS.keyboard);
 
     Keyboard.elements = {};
+    Keyboard.render = this.render.bind(this);
+
     this.createComponent();
-    document.onkeydown = (e) => checkGameStatus(e.key);
+  }
+
+  static changeKeyStyle(elem, val) {
+    const currentElement = elem;
+
+    val
+      ? currentElement.style.backgroundColor = 'rgba(111, 179, 102, 0.293)'
+      : currentElement.style.backgroundColor = 'rgba(118, 118, 118, 0.32)';
+
+    currentElement.onclick = null;
+    currentElement.style.cursor = 'not-allowed';
   }
 
   createComponent() {
@@ -27,6 +38,7 @@ class Keyboard extends Component {
       Keyboard.elements[letter] = span;
       this.container.append(span);
     }
+    document.onkeydown = (e) => checkGameStatus(e.key);
   }
 }
 
