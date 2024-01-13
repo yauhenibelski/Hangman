@@ -2,6 +2,7 @@ import createElement from '../../../utils/create-element';
 import Keyboard from '../keyboard/keyboard';
 import Man from '../man/Man';
 import Popup from '../popup/popup';
+import Quiz from '../quiz';
 import SecretWord from '../secret-word/secret-word';
 import Component from '../template/component';
 import CLASS from './notice.module.scss';
@@ -25,10 +26,11 @@ class Notice extends Component {
     const btn = createElement({ tagName: 'button', text: 'Play again' });
 
     btn.onclick = () => {
+      const { answer, question } = Quiz.getQuiz();
       Popup.remove();
       Keyboard.render();
       Man.clearGallows();
-      SecretWord.setNewSecretWord('Test');
+      SecretWord.setNewSecretWord(answer);
     };
 
     this.container.append(...[

@@ -27,7 +27,7 @@ class SecretWord extends Component {
   }
 
   showLetter(letter) {
-    if (SecretWord.secretWord.includes(letter)) {
+    if (SecretWord.secretWord.toLowerCase().includes(letter.toLowerCase())) {
       this.wordsElements.forEach((elem, i) => {
         if (letter.toLowerCase() === SecretWord.secretWord[i].toLowerCase()) {
           elem.innerText = letter.toUpperCase();
