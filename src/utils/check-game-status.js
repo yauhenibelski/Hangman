@@ -11,7 +11,9 @@ export const checkGameStatus = (l) => {
   const currentElement = Keyboard.elements[letter];
   const isShowLetter = SecretWord.showLetter(letter);
 
-  if (!isShowLetter) Man.appendPartOfBody();
+  if (!isShowLetter) {
+    Man.appendPartOfBody();
+  }
 
   if (Man.ifAllPartsAppend()) {
     Popup.run(new Notice('You Lost').getElement());

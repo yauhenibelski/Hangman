@@ -22,23 +22,31 @@ class Keyboard extends Component {
 
     currentElement.onclick = null;
     currentElement.style.cursor = 'not-allowed';
+    currentElement.disabled = true;
   }
 
   createComponent() {
     for (let i = 65; i <= 90; i += 1) {
       const letter = String.fromCharCode(i).toLowerCase();
-      const span = createElement({
-        tagName: 'span',
+      const btn = createElement({
+        tagName: 'button',
         text: String.fromCharCode(i),
         className: CLASS.key,
       });
 
-      span.onclick = () => checkGameStatus(letter);
+      btn.onclick = () => checkGameStatus(letter);
 
-      Keyboard.elements[letter] = span;
-      this.container.append(span);
+      Keyboard.elements[letter] = btn;
+      this.container.append(btn);
     }
-    document.onkeydown = (e) => checkGameStatus(e.key);
+    document.onkeydown = (e) => {
+      const key = e.key.toLowerCase();
+      if (
+        key in Keyboard.elements && Keyboard.elements[key].disabled
+      ) return;
+
+      checkGameStatus(key);
+    };
   }
 }
 
