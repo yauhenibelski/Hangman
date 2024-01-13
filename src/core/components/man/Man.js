@@ -1,15 +1,20 @@
 import createElement from '../../../utils/create-element';
 import gallows from '../../../assets/gallowsSVG.svg';
-import className from './man.module.scss';
+import CLASS from './man.module.scss';
 
 class Man {
   constructor() {
     this.container = createElement();
-    this.container.classList.add(className.man_container);
+    this.container.classList.add(CLASS.man_container);
+    this.counter = createElement({ tagName: 'h3', className: CLASS.counter });
 
     fetch(gallows)
       .then((svg) => svg.text())
-      .then((svgCode) => { this.container.innerHTML = svgCode; });
+      .then((svgCode) => {
+        this.container.innerHTML = svgCode;
+        this.container.append(this.counter);
+        this.setCounter();
+      });
 
     this.body = {
       HEAD: this.createBody('circle', {
@@ -39,8 +44,13 @@ class Man {
 
   numAddedPart = 0;
 
+  setCounter() {
+    this.counter.innerText = `Mistakes: ${this.numAddedPart} / ${Object.keys(this.body).length}`;
+  }
+
   clearGallows() {
     this.numAddedPart = 0;
+    this.setCounter();
     Object.values(this.body).forEach((svgElem) => svgElem.remove());
   }
 
@@ -69,6 +79,8 @@ class Man {
 
     this.numAddedPart += 1;
     this.container.firstChild.append(this.body[bodyKeys[this.numAddedPart - 1]]);
+
+    this.setCounter();
   }
 
   getElem = () => this.container;

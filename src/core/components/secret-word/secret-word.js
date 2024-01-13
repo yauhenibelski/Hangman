@@ -6,7 +6,7 @@ class SecretWord extends Component {
   constructor(secretWord) {
     super(className.secret_word);
 
-    this.mark = '*';
+    this.mark = '__';
     this.wordsElements = [];
     SecretWord.secretWord = secretWord;
 
@@ -42,6 +42,9 @@ class SecretWord extends Component {
     SecretWord.secretWord = newWord;
     this.wordsElements = [];
     this.render();
+
+    console.log(`Answer: ${newWord}`);
+    console.log('---');
   }
 
   areAllLettersOpen() {

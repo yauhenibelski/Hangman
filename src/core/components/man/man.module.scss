@@ -1,8 +1,16 @@
 .man_container {
   position: relative;
   display: flex;
+  justify-content: center;
+  max-width: 400px;
+  margin: auto;
 }
 
 svg {
   max-height: 35dvh;
+}
+
+.counter {
+  position: absolute;
+  align-self: flex-end;
 }
